@@ -7,7 +7,8 @@ package Array;
  */
 public class _26_simple_DeletSame {
     /**
-     * [思路1]
+     * 【思路】
+     * 双指针
      * 排序数组的元素顺序已知，假设从小到大
      * 不使用额外的数组空间，原地修改数组
      * 创造两个指针i,j
