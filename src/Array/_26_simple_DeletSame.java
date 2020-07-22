@@ -23,7 +23,6 @@ public class _26_simple_DeletSame {
         int[] nums2 = {0,0,0,1,1,2,3};
         int i = sobj.removeDuplicates(nums);
         System.out.println(i);
-
     }
 
 }

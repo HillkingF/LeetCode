@@ -18,7 +18,7 @@ class Solution35 {
             return nums.length;
         }else return mid(nums, 0, nums.length-1, target);
     }
-    public int mid(int[] nums, int start, int finish, int target){
+    public int mid(int[] nums, int start, int finish, int target){  // 递归方法
         int loc = start;
         if(start == finish){
             loc = finish;
