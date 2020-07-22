@@ -1,5 +1,9 @@
 package Array;
 
+/**
+ * 数组--简单--35题
+ * 思想：二分查找
+ */
 public class _35_simple_ForkInsertLocation {
     public static void main(String[] args){
         int[] nums = {1, 3, 5, 6};
