@@ -6,7 +6,7 @@ package Array;
  * 末位+1，输出
  * 主要考虑的是进位，从末位往前如果若干位是9，需要进位，所有位都为9时新建一个长度为length+1的数组。
  */
-public class _66_simple_AddOne {
+public class Simple_66_AddOne {
     public static void main(String[] args){
         int[ ] digits = {1,2,3,4};
         Solution66 s = new Solution66();

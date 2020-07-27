@@ -10,7 +10,7 @@ package Array;
  * 然后p往前移动1个，p1或者p2往前移动一个，继续比较。。。。
  * [这种方法的时间复杂度是O(m+n)，空间复杂度是O(1)]
  */
-public class _88_simple_merge {
+public class Simple_88_merge {
     public static void main(String[] args){
         int[] nums1 = new int[100];
         nums1[0] = 2;

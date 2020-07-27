@@ -10,7 +10,7 @@ package Array;
  * 没看
  *
  */
-public class _53_simple_MaxKidSeqSum {
+public class Simple_53_MaxKidSeqSum {
     public static void main(String[] args){
         int[] nums = {-2,1,-3,4,-1,2,1,-5,4};
         Solution53 s = new Solution53();
