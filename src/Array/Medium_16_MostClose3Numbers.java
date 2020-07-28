@@ -2,6 +2,11 @@ package Array;
 
 import java.util.Arrays;
 
+
+/**
+ * 类似于15题，还是双指针的做法。看15题的题解就行
+ * @param <x>
+ */
 public class Medium_16_MostClose3Numbers<x> {
     public static void main(String[] args){
         int[] nums = {-1,2,1,-4}; // -4 -1  2 3 6 7
@@ -24,22 +29,26 @@ class Solution16 {
         int r = nums.length - 1;
         int mostclose = Integer.MAX_VALUE;  // 求差值
         int sum = 0;
-        for(one = 0; one < nums.length; one++){
-            l = one + 1;
-            r = nums.length - 1;
-            while(l < r){
-                if(nums[one] + nums[l] + nums[r] == target){
-                    mostclose = 0;
-                    sum = nums[one] + nums[l] + nums[r];
-                    break;}
-                else if(Math.abs(nums[one] + nums[l] + nums[r] - target) < mostclose){
-                    mostclose = Math.abs((nums[one] + nums[l] + nums[r]) - target);
-                    sum = nums[one] + nums[l] + nums[r];
-                }
+        int threesum = 0;
+        int len = nums.length;
 
-                if(nums[one] + nums[l] + nums[r] < target) l++;
+        for(one = 0; one < len; one++){
+            l = one + 1;
+            r = len - 1;
+            while(l < r){
+                threesum = nums[one] + nums[l] + nums[r];
+                if(threesum == target){
+                    mostclose = 0;
+                    sum = threesum;
+                    break;}
+                else if(Math.abs(threesum - target) < mostclose){
+                    mostclose = Math.abs(threesum - target);
+                    sum = threesum;
+                }
+                if(threesum < target) l++;
                 else r--;
             }
+            if(mostclose == 0) break;
         }
         return sum;
     }
