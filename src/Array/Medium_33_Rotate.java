@@ -1,6 +1,5 @@
 package Array;
-
-public class Mediun_33_Rotate {
+ class Mediun_33_Rotate {
     public static void main(String[] args){
         int[] nums = {1};
         int target = 0;
