@@ -1,11 +1,4 @@
 package Linked_List;
-class ListNode {
-    int val;
-    ListNode next; // 指向下一个链表节点
-    ListNode() {}  // 链表节点类的构造方法
-    ListNode(int val) { this.val = val; }  // 链表节点类的构造方法
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; } // 链表节点类的构造方法
-}
 
 public class Simple_21_MergeTwoLists {
     public static void main(String[] args){
