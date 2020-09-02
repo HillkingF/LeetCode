@@ -18,6 +18,7 @@ public class Simple_141_HasCycle {
             p = r;
             count += 1;
         }
+        return false;
 
     }
 }
