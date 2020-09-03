@@ -2,23 +2,25 @@ package Linked_List;
 
 public class Simple_141_HasCycle {
     public boolean hasCycle(ListNode head) {
-        int count = 0;
-        int loc = -1;
-        ListNode r = head;
-        ListNode p = r;
-        while(r != null){
-            while(p.next != null){
-                if(p.next == r){ //说明出现环了
-                    return true;
-                }else{
-                    p = p.next;
-                }
+        /**
+         * 【方法一：快慢指针】
+         * 慢指针每次走一步，快指针每次走两步
+         * 当快指针先到null，说明没有环，
+         * 当快指针和慢指针相遇，说明有环
+         */
+        ListNode man = head, kuai = head;
+        if(head == null)return false;
+        while(kuai.next != null && kuai.next.next != null){
+            kuai = kuai.next.next;
+            if(kuai != man){
+                man = man.next;
+            }else{
+                return true;
             }
-            r = r.next;
-            p = r;
-            count += 1;
+
         }
         return false;
+
 
     }
 }
