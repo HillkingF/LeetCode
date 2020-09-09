@@ -15,19 +15,34 @@ public class Medium_19_removeNthFromEnd {
                     }else{
                         //x不变
                     }
-                }else if(count > count + 1){
+                }else if(count > n + 1){
                     x = x.next;
                 }
                 p = p.next;
             }
-            
+            ListNode after = x.next.next;
+            x.next = after;
 
-            return null;
+
+            return head;
         }else{
             return null;
         }
+    }
 
-
-
+    public ListNode removeNthFromEnd1(ListNode head, int n) {
+        //对上面方法的优化
+        int count = 0;
+        ListNode x = head, p = head;
+        if(head == null) return null;
+        while(p != null){
+            count += 1;
+            if(count == n && p.next == null) return head.next; //说明节点数量等于n，直接返回头结点的下一个
+            if(count > n + 1) x = x.next;
+            p = p.next;
+        }
+        ListNode after = x.next.next;
+        x.next = after;
+        return head;
     }
 }
