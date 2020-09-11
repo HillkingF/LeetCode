@@ -2,6 +2,9 @@ package Linked_List;
 
 public class Medium_86_partition {
     public ListNode partition(ListNode head, int x) {
+        /**
+         * 这道题解答很迷，不知道为啥就正确了
+         */
         ListNode ln = head;
 
         ListNode pre = new ListNode(0);
