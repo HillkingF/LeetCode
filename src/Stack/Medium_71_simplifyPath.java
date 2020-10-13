@@ -132,7 +132,7 @@ public class Medium_71_simplifyPath {
                 if(len >= 4 && res.substring(len-4).equals("/...")){
                 }else if(res.length() == 2)res = "/";
                 else res = res.substring(0, len-2);
-                
+
             }
         }
 
