@@ -20,36 +20,48 @@ import java.util.Stack;
  */
 
 public class Medium_150_evalRPN {
-    public int (String[] tokens) {
+    public static void main(String[] args){
+        String[] tokens = {"4", "13", "5", "/", "+"};
+        int a = evalRPN(tokens);
+        System.out.print(a);
+    }
+    public static int evalRPN(String[] tokens) {
         Stack<Integer> stack = new Stack();
-        HashMap<int> sign = 0;  // 1:+  2:-  3:*  4:/
+        int a;
+        int b;
+
         for(String str: tokens){
-            sign = 0;
 
             // 字符串类型判断
-            if(str.equals("+"))sign = 1;
-            else if(str.equals("-")) sign = 2;
-            else if(str.equals("*")) sign = 3;
-            else if(str.equals("/")) sign = 4;
-            else sign = 0;
-
-            // 是否需要出栈计算  sign！= 0时
-            if(sign == 0) stack.push(Integer.parseInt(str));
-            else{
-                stack.push(
-                        stack.pop()
-                )
+            if(str.equals("+")){
+                a = stack.pop();
+                b = stack.pop();
+                stack.push(b + a);
             }
-
-
+            else if(str.equals("-")){
+                a = stack.pop();
+                b = stack.pop();
+                stack.push(b - a);
+            }
+            else if(str.equals("*")){
+                a = stack.pop();
+                b = stack.pop();
+                stack.push(b * a);
+            }
+            else if(str.equals("/")){
+                a = stack.pop();
+                b = stack.pop();
+                stack.push(b / a);
+            }
+            else stack.push(Integer.parseInt(str));
         }
+        return stack.pop();
     }
-
-    public int jisuan(int sign, int a, int b){
-        if(sign == 1)return 
-        else if(str.equals("-")) sign = 2;
-        else if(str.equals("*")) sign = 3;
-        else if(str.equals("/")) sign = 4;
-        else sign = 0;
+    public static  int jisuan(int sign, Integer b, Integer a){
+        if(sign == 1)return a + b;
+        else if(sign == 2) return a - b;
+        else if(sign == 3) return a * b;
+        else if(sign == 4) return a/b;
+        else return 0;
     }
 }
