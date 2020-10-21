@@ -15,22 +15,28 @@ public class Medium_402_removeKdigits {
         Stack<Integer> stack = new Stack<>();
         int count = 0;
         int strnow = 0;
-        int sign = 1;
+        int sign = 0;
         int i = 0;
         for (i = 0; i < num.length(); i++){
+            strnow = Integer.valueOf(num.substring(i,i+1));
+            System.out.println(count);
             if(stack.isEmpty())
-                if(num.charAt(i)!='0')stack.push(Integer.valueOf(num.charAt(i)));
+                if(num.charAt(i)!='0'){
+                    stack.push(Integer.valueOf(num.substring(i,i+1)));
+                    System.out.print(Integer.valueOf(num.charAt(i)));
+                }
             else{
-                strnow = Integer.valueOf(num.charAt(i));
                 if(strnow != 0) {
+                    if(count >= k) break;
                     if (strnow > stack.peek()) {
-                        count += 1;
-                    } else if (strnow == stack.peek()) stack.push(Integer.valueOf(num.charAt(i)));
-                    else {
+                        count++;
+                    } else if (strnow == stack.peek()) {
+                        stack.push(Integer.valueOf(num.substring(i,i+1)));
+                    } else {
                         while (!stack.isEmpty()) {
                             if (count < k) {
                                 stack.pop();
-                                count += 1;
+                                count ++;
                             } else{
                                 sign = 1;
                                 break;
@@ -41,14 +47,14 @@ public class Medium_402_removeKdigits {
                     while(!stack.isEmpty()){
                         if (count < k) {
                             stack.pop();
-                            count += 1;
+                            count ++;
                         } else{
                             sign = 1;
                             break;
                         }
                     }
                 }
-                if( sign == 0) break;
+                if( sign == 1) break;
 
                 }
         }
