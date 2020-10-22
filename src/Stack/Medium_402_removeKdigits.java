@@ -23,7 +23,6 @@ public class Medium_402_removeKdigits {
             if(stack.isEmpty())
                 if(num.charAt(i)!='0'){
                     stack.push(Integer.valueOf(num.substring(i,i+1)));
-                    System.out.print(Integer.valueOf(num.charAt(i)));
                 }
             else{
                 if(strnow != 0) {
