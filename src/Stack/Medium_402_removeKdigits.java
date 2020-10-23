@@ -20,11 +20,11 @@ public class Medium_402_removeKdigits {
         for (i = 0; i < num.length(); i++){
             strnow = Integer.valueOf(num.substring(i,i+1));
             System.out.println(count);
-            if(stack.isEmpty())
+            if(stack.isEmpty()){
                 if(num.charAt(i)!='0'){
                     stack.push(Integer.valueOf(num.substring(i,i+1)));
                 }
-            else{
+            }else{
                 if(strnow != 0) {
                     if(count >= k) break;
                     if (strnow > stack.peek()) {
