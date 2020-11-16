@@ -30,7 +30,5 @@ public class Medium_739_dailyTemperatures {
             stack.push(i);
         }
         return res;
-
-
     }
 }
