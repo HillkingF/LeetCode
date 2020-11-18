@@ -33,10 +33,9 @@ public class Medium_856_scoreOfParentheses {
                     }
                 }
                 stack.push(String.valueOf(tmp));
-                tmp = 0;
             }
+            tmp = 0;
         }
-        tmp = 0;
         while (!stack.isEmpty()){ tmp = tmp + Integer.parseInt(stack.pop());  }
         return tmp;
 
