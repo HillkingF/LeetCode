@@ -17,12 +17,12 @@ public class TreeNode {  // 定义一棵二叉树
 }
 
 class pre_definetree{
-    public static void main(String[] args){
-        int[] nums = {1, 2, 3, -1, 4, -1,-1, -1, 6, -1, 7, 8, 9};
-        TreeNode t = def(nums);
-    }
+//    public static void main(String[] args){
+//        int[] nums = {1, 2, 3};
+//        TreeNode t = def(nums);
+//    }
     // 前序初始化一棵树
-    public static TreeNode def(int[] nums){
+    public  TreeNode def(int[] nums){
         Stack<TreeNode> stack = new Stack<>();
         TreeNode T = new TreeNode();
         TreeNode root = T;
