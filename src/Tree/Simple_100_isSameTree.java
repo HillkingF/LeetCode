@@ -61,12 +61,11 @@ public class Simple_100_isSameTree {
                 }
             }
             if(root1 == null && root2 == null){
-                // 两个都为空，说明到了叶子结点，出栈 某个父节点
-                root1 = s1.pop();
-                root2 = s2.pop();
-                // 由于父节点肯定已经遍历过了，所以此时，令根等于右子树根
-                root1 = root1.right;
-                root2 = root2.right;
+                // 两个都为空，说明到了叶子结点，
+                // 出栈某个父节点（这个出栈的节点一定已经遍历过了）,
+                // 所以令根等于其右子树根
+                root1 = s1.pop().right;
+                root2 = s2.pop().right;
                 if(root1 != null && root2 != null){
                     s1.push(root1);
                     s2.push(root2);
