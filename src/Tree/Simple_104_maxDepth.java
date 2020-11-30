@@ -10,11 +10,19 @@ public class Simple_104_maxDepth {
          * 1、深度优先搜索 设置一个maxlen ，当每次往深处遍历的时候与其比较更新
          * 当回退的时候：
          */
-        TreeNode root = new TreeNode(3);
-        root.left = new TreeNode(9);
-        root.right = new TreeNode(20);
-        root.right.left = new TreeNode(15);
-        root.right.right = new TreeNode(7);
+        TreeNode root = new TreeNode(5);
+        root.left = new TreeNode(0);
+        root.right = new TreeNode(-4);
+        root.left.left = new TreeNode(-1);
+        root.left.right = new TreeNode(-6);
+        root.right.left = new TreeNode(-9);
+        root.left.left.left = new TreeNode(7);
+        root.left.right.left = new TreeNode(1);
+        root.left.right.right = new TreeNode(3);
+        
+        root.left.right.right = new TreeNode(3);
+        root.left.right.right = new TreeNode(3);
+
         int res = maxDepth(root);
         System.out.print(res);
     }
@@ -24,7 +32,6 @@ public class Simple_104_maxDepth {
         int len = 1;  //动态更新的指针,当前深度
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
-        int sign = 1;// 表示还在根上，没有开始左右走
 
         TreeNode tmp = root;
 
@@ -59,6 +66,7 @@ public class Simple_104_maxDepth {
                     len--;
                 }
             }
+            if(len > maxlen) maxlen = len;
 
         }
         return maxlen;
