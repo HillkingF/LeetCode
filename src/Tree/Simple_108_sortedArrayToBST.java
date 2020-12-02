@@ -34,7 +34,7 @@ public class Simple_108_sortedArrayToBST {
     }
     // start 和 finish 都是坐标索引，不是长度
     public static TreeNode binaryT(int[] nums, int start, int finish, int mid,TreeNode root){
-        
+
 
 
     }
