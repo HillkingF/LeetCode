@@ -23,7 +23,7 @@ public class Simple_108_sortedArrayToBST {
         if(nums.length == 0) return null;
         int len = nums.length;
 
-        int mid = (nums.length-1)/2;
+        int mid = (nums.length-1)/2;   // 单数个数组就是中间那个，双数个数组是左边那个
         TreeNode root = new TreeNode(nums[mid]);
         root = binaryT(nums, 0, mid-1, mid, root);
         root = binaryT(nums, mid+1, nums.length-1,mid, root);
@@ -34,8 +34,24 @@ public class Simple_108_sortedArrayToBST {
     }
     // start 和 finish 都是坐标索引，不是长度
     public static TreeNode binaryT(int[] nums, int start, int finish, int mid,TreeNode root){
-
-
-
+        int submid = (start + finish)/2;
+        // 下面两个 if（mid && ）判断，最多只可能满足其中一个
+        if(mid > finish && start < finish){
+            // 必须先确定 root.left 才能继续向下迭代
+            root.left = new TreeNode(nums[submid]);
+            root.left = binaryT(nums, start, submid-1, submid, root.left);
+            root.left = binaryT(nums, submid+1, finish, submid, root.left);
+        }else if(mid > finish && start == finish){
+            root.left = new TreeNode(nums[start]);
+        }
+        if(mid < start && start < finish){
+            // 必须先确定 root.right 才能继续向下迭代
+            root.right = new TreeNode(nums[submid]);
+            root.right = binaryT(nums, start, submid-1, submid, root.right);
+            root.right = binaryT(nums, submid+1,finish, submid, root.right);
+        }else if(mid < start && start == finish){
+            root.right = new TreeNode(nums[start]);
+        }
+        return root;
     }
 }
