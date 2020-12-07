@@ -8,7 +8,7 @@ public class Simple_235_lowestCommonAncestor {
 
         if(s <= root.val && root.val <= l) res = root;
         else if(l < root.val) res = lowestCommonAncestor(root.left, p, q);
-        else if(s < root.val) res = lowestCommonAncestor(root.right, p, q);
+        else if(s > root.val) res = lowestCommonAncestor(root.right, p, q);
         return res;
 
     }
