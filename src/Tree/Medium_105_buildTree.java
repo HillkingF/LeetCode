@@ -6,6 +6,8 @@ import java.util.Arrays;
  * 前序序列中每一个数字都是某个子树的根节点，
  * 所以前序数组中第一个一定是整个树的根节点
  * 从第一个根节点就可以找到中序的左子树和右子树，然后分别对左右子树继续寻找根及根的左右子树
+ *
+ * 优化：使用hashmap存储节点的值和位置，比每一次去找要快很多，可以在下面的程序上优化试试
  */
 public class Medium_105_buildTree {
     public static void main(String[] args){
