@@ -28,8 +28,23 @@ public class Medium_116_connect {
 
     public Node connect(Node root){
         //第二种方法：递归，常量级空间
-        
+        // 子树内的连接
+        if(root == null || root.left == null) return root;
 
+        // 不同子树之间的连接
+        root.left = connect(root.left);
+        root.right = connect(root.right);
+        Node lnode = root.left;
+        Node rnode = root.right;
+        lnode.next = rnode;
+        while(lnode.right != null){
+            lnode = lnode.right;
+            rnode = rnode.left;
+            lnode.next = rnode;
+        }
+        return root;
     }
+
+
 
 }
