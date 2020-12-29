@@ -40,6 +40,5 @@ public class Simple_1025_divisorGame {
             }
         }
         return f[N];
-
     }
 }
