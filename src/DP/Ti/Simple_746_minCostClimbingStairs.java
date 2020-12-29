@@ -12,7 +12,7 @@ public class Simple_746_minCostClimbingStairs {
          * 6、边界条件：
          * 7、计算顺序：f[0],f[1],....,f[n]
          * 8、返回值: f[n]
-         * 9、优化：
+         * 9、优化：使用滚动数组
          */
         if(cost.length <= 1)return 0;
         int[] f = new int[cost.length + 1];
