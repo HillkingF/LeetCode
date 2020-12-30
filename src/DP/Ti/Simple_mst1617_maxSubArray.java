@@ -13,7 +13,7 @@ public class Simple_mst1617_maxSubArray {
          * 7、返回 0-(n-1) 中最大的f
          *
          */
-        
+
         if(nums.length == 0) return 0;
         if(nums.length == 1) return nums[0];
         int len = nums.length;
