@@ -12,7 +12,9 @@ public class Simple_mst0801_waysToStep {
          * 6、计算顺序：f(0) 到 f(n)
          * 7、边界条件：
          * 8、返回值：f(n)
-         * 9、优化
+         * 9、优化：使用一个固定变量记录 f[i-1]即可，懒得优化了
+         *
+         * 另外分治法没尝试
          */
         if(n <= 2) return n;
         int[] f = new int[n + 1];

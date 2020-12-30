@@ -11,7 +11,7 @@ public class Simple_mst1617_maxSubArray {
          * 5、初始化： f[0] = nums[0]
          * 6、计算：从 f[0] 到 f[n-1]
          * 7、返回 0-(n-1) 中最大的f
-         *
+         * 8、优化：
          */
 
         if(nums.length == 0) return 0;
