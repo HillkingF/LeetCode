@@ -26,14 +26,9 @@ public class Medium_63uniquePathsWithObstacles {
                 if(obstacleGrid[i][j] == 1) f[i][j] = 0; // 这个位置有障碍物直接为0
                 else{
                     if(i == 0 || j == 0){
-                        if(i == 0 && j == 0){
-                            f[0][0] = 1;
-                        }else if(i == 0){
-                            if(f[0][j-1] == 0) f[0][j] = 0;
-                            else f[0][j] = 1;
-                        }else{
-                            if(f[i-1][0] == 0)f[i][0] = 0;
-                            else f[i][0] = 1;
+                        f[i][j] = 1;
+                        if((j != 0 && f[0][j-1] == 0) || (i != 0 && f[i-1][0] == 0)){
+                            f[i][j] = 0;
                         }
                     }
                     else{
