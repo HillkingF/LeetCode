@@ -11,7 +11,8 @@ public class Medium_63uniquePathsWithObstacles {
          * 判断obstacleGrid的值，
          * 若位置上值为1，则f对应位置值为0，表示不能到达
          *
-         * 【明天优化一下】
+         * 【优化一下】
+         * 如下：时间快了，空间没有优化
          */
         int width = obstacleGrid.length;
         int height = obstacleGrid[0].length;
