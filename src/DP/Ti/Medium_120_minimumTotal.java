@@ -23,7 +23,7 @@ public class Medium_120_minimumTotal {
         triangle.add(i1);
         triangle.add(i2);
         triangle.add(i3);
-//        triangle.add(i4);
+        triangle.add(i4);
         int x = minimumTotal(triangle);
         System.out.print(x);
 
@@ -52,7 +52,7 @@ public class Medium_120_minimumTotal {
             if(sign == 1)tmplist2.clear(); // 初始：第0层、tmplist1存储、sign=1，该用tmplist2存储了
             else tmplist1.clear();
             for(int a: tmplist1){
-                System.out.print(a);
+                System.out.println(a);
             }
 
             // 遍历层中每一个，并计算 每一个数字 对应的上一层的最小路径
@@ -65,6 +65,7 @@ public class Medium_120_minimumTotal {
                     }else{
                         tmpsum = tmplist1.get(eachnum) < tmplist1.get(eachnum - 1) ?
                                 tmplist1.get(eachnum): tmplist1.get(eachnum - 1);
+                        tmpsum += inner.get(eachnum);
                         tmplist2.add(tmpsum);
                     }
                 }else{// 使用tmplist1存储, 从tmplist2获取
@@ -75,11 +76,12 @@ public class Medium_120_minimumTotal {
                     }else{
                         tmpsum = tmplist2.get(eachnum) < tmplist2.get(eachnum - 1) ?
                                 tmplist2.get(eachnum): tmplist2.get(eachnum - 1);
+                        tmpsum += inner.get(eachnum);
                         tmplist1.add(tmpsum);
                     }
                 }
             }
-            sign = sign * (0-1);
+            sign = sign * (-1);
         }
 
         int min = Integer.MAX_VALUE;
