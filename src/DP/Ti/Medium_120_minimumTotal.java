@@ -37,64 +37,26 @@ public class Medium_120_minimumTotal {
 
         由于题目中给定的是三角形状的列表，所以后一层总比前一层多一个数值
         */
-
-        List<Integer> tmplist1 = new ArrayList<>();
-        List<Integer> tmplist2 = new ArrayList<>();
-
-        int sign = 1; // 1 的时候，用tmplist1来记录前一层的输出，-1的时候用tmplist2记录输出
-        tmplist1.add(triangle.get(0).get(0));  // 初始化直接放入三角形第一层中的第一个元素
-        int tmpsum = 0;
-
+        if(triangle.size() == 1) return triangle.get(0).get(0);
+        List<Integer> pri = new ArrayList<>();
+        pri.add(triangle.get(0).get(0));
+        int min = Integer.MAX_VALUE;
         for(int ceng = 1; ceng < triangle.size(); ceng++){// 遍历三角形中的每一层, 直接从第一层开始
             List<Integer> inner = triangle.get(ceng);
-
-            // 置空用来存储的列表
-            if(sign == 1)tmplist2.clear(); // 初始：第0层、tmplist1存储、sign=1，该用tmplist2存储了
-            else tmplist1.clear();
-            for(int a: tmplist1){
-                System.out.println(a);
-            }
-
-            // 遍历层中每一个，并计算 每一个数字 对应的上一层的最小路径
-            for(int eachnum = 0; eachnum < inner.size(); eachnum++){ // 遍历一层中的每一个
-                if(sign == 1){ // 使用tmplist2存储, 从tmplist1获取
-                    if(eachnum == 0){
-                        tmplist2.add(tmplist1.get(eachnum) + inner.get(eachnum));
-                    }else if(eachnum == inner.size()-1){
-                        tmplist2.add(tmplist1.get(eachnum - 1) + inner.get(eachnum));
-                    }else{
-                        tmpsum = tmplist1.get(eachnum) < tmplist1.get(eachnum - 1) ?
-                                tmplist1.get(eachnum): tmplist1.get(eachnum - 1);
-                        tmpsum += inner.get(eachnum);
-                        tmplist2.add(tmpsum);
-                    }
-                }else{// 使用tmplist1存储, 从tmplist2获取
-                    if(eachnum == 0){
-                        tmplist1.add(tmplist2.get(0) + inner.get(0));
-                    }else if(eachnum == inner.size()-1){
-                        tmplist1.add(tmplist2.get(eachnum - 1) + inner.get(eachnum));
-                    }else{
-                        tmpsum = tmplist2.get(eachnum) < tmplist2.get(eachnum - 1) ?
-                                tmplist2.get(eachnum): tmplist2.get(eachnum - 1);
-                        tmpsum += inner.get(eachnum);
-                        tmplist1.add(tmpsum);
-                    }
-                }
-            }
-            sign = sign * (-1);
-        }
-
-        int min = Integer.MAX_VALUE;
-        if(sign == -1){
-            for(int x: tmplist2){
-                if(x < min) min = x;
-            }
-        }
-        else{
-            for(int t: tmplist1){
-                if(t < min)min = t;
-            }
+            pri = compute(pri, triangle.get(ceng));
+            if(ceng == triangle.size()-1) min = pri.stream().min((i1, i2) -> i1.compareTo(i2)).get();
         }
         return min;
+    }
+    public static List<Integer> compute(List<Integer> pri, List<Integer> inner){
+        List<Integer> later = new ArrayList<>();
+        int tmp;
+        for(int eachnum = 0; eachnum < inner.size(); eachnum++) { // 遍历一层中的每一个
+            if (eachnum == 0) tmp = pri.get(eachnum);
+            else if (eachnum == inner.size() - 1)tmp = pri.get(eachnum - 1);
+            else tmp = pri.get(eachnum) < pri.get(eachnum - 1) ? pri.get(eachnum) : pri.get(eachnum - 1);
+            later.add(tmp + inner.get(eachnum));
+        }
+        return later;
     }
 }
