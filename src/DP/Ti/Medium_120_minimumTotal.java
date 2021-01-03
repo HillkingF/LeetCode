@@ -44,7 +44,8 @@ public class Medium_120_minimumTotal {
         for(int ceng = 1; ceng < triangle.size(); ceng++){// 遍历三角形中的每一层, 直接从第一层开始
             List<Integer> inner = triangle.get(ceng);
             pri = compute(pri, triangle.get(ceng));
-            if(ceng == triangle.size()-1) min = pri.stream().min((i1, i2) -> i1.compareTo(i2)).get();
+            if(ceng == triangle.size()-1)
+                min = pri.stream().min((i1, i2) -> i1.compareTo(i2)).get();// 获取列表中的最小数值
         }
         return min;
     }
