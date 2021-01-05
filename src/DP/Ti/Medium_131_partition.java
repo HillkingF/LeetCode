@@ -17,11 +17,13 @@ public class Medium_131_partition {
     public static List<List<String>> partition(String s) {
         /**
          * 【类型：划分型】
-         * 【提示：f[i][j]表示索引i到索引j之间的内容？】
+         *
          * 【思路】
          * 1、最后一段：
          * 2、子问题：以每一个字符为 一个回文段的中间字符的 情况；
-         * 3、
+         * 看看partition中的注释理解一下。
+         *
+         * 自己做出来的时间很慢优化不了，可以再看看题解中的其他方法
          *
          */
         List<List<String>> outer = new ArrayList<>();
@@ -138,6 +140,9 @@ public class Medium_131_partition {
         return allchar.get(s.length()-1);
     }
 
+
+
+    // 下面是对上面进行的优化，但是时间基本没有提升
 
     private List<Integer> zuhe_j = new ArrayList<>();
     private List<Integer> zuhe_o = new ArrayList<>();
