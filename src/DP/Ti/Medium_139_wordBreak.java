@@ -21,14 +21,9 @@ public class Medium_139_wordBreak {
         f[0] = true;
 
         for(int i = 1; i <= s.length(); i ++){
-            f[i] = false;
             for(int j = 0; j < i; j++){
-                if(j == 0){
-                    f[i] = wordDict.contains(s.substring(j,i));
-                }else{
-                    f[i] = f[j] && wordDict.contains(s.substring(j,i));
-                }
-                if(f[i]==true) break;
+                f[i] = f[j] && wordDict.contains(s.substring(j,i));
+                if(f[i]) break;
             }
         }
         return f[s.length()];
