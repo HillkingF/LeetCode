@@ -36,7 +36,7 @@ public class Simple_mst_0106 {
 
     public String compressString1(String S) {
         /**对上面进行优化
-         *
+         * 双指针法
          */
         if(S.length() <= 1) return S;
         char[] s = S.toCharArray();
