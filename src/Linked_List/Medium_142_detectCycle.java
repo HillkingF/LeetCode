@@ -54,6 +54,6 @@ public class Medium_142_detectCycle {
 
         当快慢指针相遇时，设置一个额外的指针从开始处，与慢指针同时移动；再次相遇为初始点
          */
-
+        return null;
     }
 }
