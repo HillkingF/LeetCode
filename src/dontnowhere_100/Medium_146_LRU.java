@@ -1,8 +1,6 @@
-package dontnowhere;
+package dontnowhere_100;
 
 import java.util.ArrayDeque;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Queue;
 
 
