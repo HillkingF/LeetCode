@@ -1,6 +1,5 @@
 package DP.Ti;
 
-import javafx.scene.control.TableCell;
 
 public class Simple_1025_divisorGame {
     public boolean divisorGame(int N) {
