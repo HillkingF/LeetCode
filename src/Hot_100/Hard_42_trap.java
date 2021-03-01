@@ -1,4 +1,4 @@
-package dontnowhere_100;
+package Hot_100;
 
 public class Hard_42_trap {
     /**

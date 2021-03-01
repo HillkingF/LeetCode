@@ -1,10 +1,7 @@
-package dontnowhere_100;
+package Hot_100;
 
-import com.sun.deploy.util.SyncAccess;
 
-import javax.management.openmbean.SimpleType;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Medium_56_merge {

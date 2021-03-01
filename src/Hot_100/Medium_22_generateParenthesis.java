@@ -1,7 +1,6 @@
-package dontnowhere_100;
+package Hot_100;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Medium_22_generateParenthesis {
