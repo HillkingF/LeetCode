@@ -9,9 +9,11 @@ public class Hard_76_minWindow {
     public static void main(String[] args){
         String s = "asabeiwafgc";
         String t = "ac";
-        String res = minWindow(s,t);
+        // String res = minWindow(s,t);
+        String res = minsort(s);
         System.out.println(res);
     }
+
 
     /**
      * 下面可运行，但是太慢了，超出leetcode 时间限制
@@ -60,14 +62,33 @@ public class Hard_76_minWindow {
         return "";
 
     }
+
     public static String minWindow1(String s, String t) {
         if(s.length() < t.length()) return "";
         if(s.equals(t)) return s;
 
         int start = 0;
         int end = 0;
+        String x = minsort(t);
+        String res = "";
+        int reslength = Integer.MAX_VALUE;
+        while(end < s.length()){
+            String y = minsort(s.substring(start, end + 1));
+        }
+
+
+
+        return "";
+
         
 
 
+    }
+    // 对子序列进行排序
+    public static String minsort(String x){
+        char[] xchar = x.toCharArray();
+        Arrays.sort(xchar);
+        String newstr = new String(xchar);
+        return newstr;
     }
 }
