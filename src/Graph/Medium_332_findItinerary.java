@@ -41,6 +41,12 @@ public class Medium_332_findItinerary {
             // 队列不为空出队
             String next = queue.poll();
             res.add(next);
+            List<String> nextteam = map.get(next);
+            // 排序下一个目的地组
+            Collections.sort(nextteam);
+            // 选择其中最小的
+            queue.add(nextteam.get(0));
+            map.get(next).remove(nextteam.get(0));
 
 
             // 队列为空:开始下一组循环或者直接结束? 看题目要求了:是不是连通
