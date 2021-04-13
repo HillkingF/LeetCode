@@ -3,6 +3,12 @@ package Graph;
 import java.util.*;
 
 public class Medium_332_findItinerary {
+
+}
+
+class solve332{
+    private List<String> resmap;
+
     public List<String> findItinerary(List<List<String>> tickets) {
         // 总有一个开始 JFK,总有一个结束,结束时map中再不包含任何键值对
 
@@ -31,29 +37,65 @@ public class Medium_332_findItinerary {
             }
         }
 
-        // 存放结果序列的 列表
-        List<String> res = new ArrayList<>();
-        Queue<String> queue = new LinkedList<>();
-        // 队列初始化
-        queue.add("JFK");
-        while(!queue.isEmpty()){
+        // 先对map中的value进行排序
+        for(String start: map.keySet()){
+            Collections.sort(map.get(start));
+        }
+        for(String str: map.keySet()){
+            System.out.println(str);
+            System.out.println(map.get(str));
+        }
 
-            // 队列不为空出队
-            String next = queue.poll();
-            res.add(next);
-            List<String> nextteam = map.get(next);
-            // 排序下一个目的地组
-            Collections.sort(nextteam);
-            // 选择其中最小的
-            queue.add(nextteam.get(0));
-            map.get(next).remove(nextteam.get(0));
+        // 下面将第一个出发地 JFK传入遍历
+        List<String> res = DFS("","JFK", map);
+        Collections.reverse(res);
+        return res;
 
 
-            // 队列为空:开始下一组循环或者直接结束? 看题目要求了:是不是连通
-            if(queue.isEmpty()){
+    }
 
+    public List<String> DFS(String lastStart, String start, HashMap<String, List<String>> orimap){
+        HashMap<String, List<String>> map = new HashMap<>();
+        map.putAll(orimap);  // 深拷贝
+        if(lastStart.equals("")){
+
+        }else{
+            map.get(lastStart).remove(start);
+            if(map.get(lastStart).isEmpty()){      // 此时如果start没有邻接节点,则从图中删除
+                map.remove(lastStart);
             }
         }
 
+
+
+        List<String> res = new ArrayList<>();
+
+        if(!map.containsKey(start)){  // 说明是最后一个目的地了:需要判断
+            if(map.isEmpty()){
+                res.add(start);
+            }
+            return res;
+
+        }
+
+        // start还有邻接节点: 选择其中最小的那个
+        Collections.sort(map.get(start));  // 对start的邻接列表排序
+        for(int i = 0; i < map.get(start).size(); i++){
+            String nextstart = map.get(start).get(i);  // 获取邻接列表最小的那个
+            List<String> nextres = DFS(start, nextstart, map);
+            if(nextres.isEmpty()){
+            }else{
+                nextres.add(start);
+                res = nextres;
+                break;
+            }
+        }
+
+        return res;
+
+
+
+
     }
+
 }
