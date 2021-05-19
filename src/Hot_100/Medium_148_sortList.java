@@ -99,7 +99,6 @@ public class Medium_148_sortList {
         int sublen = 1; // 归并区间（一半）
         int start = 0;  // 每一轮从第0个节点开始，直到最后一个节点
         int count = 0;  // 计算每一对儿中，放到的节点个数
-
         ListNode newhead = new ListNode(0,null);  // 用于保存每一轮归并后的部分有序链表的头结点
         ListNode newlast = newhead; // 新链表的尾结点
 
@@ -118,7 +117,7 @@ public class Medium_148_sortList {
                 ListNode Alast = A;
                 ListNode B = head0;
                 ListNode Blast = B;
-                // 寻找并记录每一对儿无序区间中的A和B部分
+                // 5. 寻找并记录每一对儿无序区间中的A和B部分
                 while(count < start + 2*sublen && head != null){
                     if(count <= start + sublen - 1){  // 找A
                         if(count == start){
@@ -131,7 +130,6 @@ public class Medium_148_sortList {
                             Alast = Alast.next;
                         }
                         Alast.next = null;
-                        count ++;
                     }
                     else{
                         if(count == start + sublen){
@@ -144,11 +142,12 @@ public class Medium_148_sortList {
                             Blast = Blast.next;
                         }
                         Blast.next = null;
-                        count ++;
                     }
+                    count ++;
                 }
-                // 如果最后一个区间内只有A部分，A已经是有序的，所以直接增加到新链表末位即可
-                if(count <= start + sublen){ // 说明只有A，直接添加到新数组
+
+                // 6. A和B两个有序链表进行合并，合并完的新链表依旧有序
+                if(count <= start + sublen){// 如果最后一个区间内只有A部分，A已经是有序的，所以直接增加到新链表末位即可
                     newlast.next = A;
                 }else{ // 否则如果A，B都存在，则将A和B两个有序数组合并成
                     while(A != null && B != null){
@@ -171,18 +170,15 @@ public class Medium_148_sortList {
                         newlast.next = A;
                     }
                 }
+                // 7. 将newlast始终保持在最后一个节点，以便新对儿的连接
                 while(newlast.next != null){
                     newlast = newlast.next;
                 }
             } // for
+            // 将本轮暂存链表赋值给head链表，以便重复下一轮操作
             head = newhead.next;
         }
         return head;
-
-
-
-
-
     }
 
 
