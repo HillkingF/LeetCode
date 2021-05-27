@@ -1,0 +1,4 @@
+数组,list,字符串之间的相互转化
+list元素比较用equals
+引用元素比较用equala
+queue/stack创建时  new的类型
