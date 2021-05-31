@@ -1,6 +1,10 @@
 package offer;
 
 public class offer_33 {
+    /**
+     * 二叉查找树（Binary Search Tree），（又：二叉搜索树，二叉排序树）
+     * 左子树值 <= 根 <= 右子树值
+     */
     public static void main(String[] args) {
         //int a = 1;
         //int b = 1;
