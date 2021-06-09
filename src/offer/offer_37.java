@@ -94,14 +94,14 @@ public class offer_37{
 
 
 class o_37{
-    public String serialize(TreeNode root) {
-
-    }
-
-    // Decodes your encoded data to tree.
-    public TreeNode deserialize(String data) {
-
-    }
+    //public String serialize(TreeNode root) {
+    //
+    //}
+    //
+    //// Decodes your encoded data to tree.
+    //public TreeNode deserialize(String data) {
+    //
+    //}
 }
 
 

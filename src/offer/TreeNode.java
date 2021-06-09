@@ -11,7 +11,7 @@ class TreeNode {
         this.val = val;
     }
 
-    TreeNode(int val, offer_37.TreeNode left, offer_37.TreeNode right) {
+    TreeNode(int val, TreeNode left, TreeNode right) {
         this.val = val;
         this.left = left;
         this.right = right;
