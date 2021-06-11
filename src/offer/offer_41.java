@@ -16,5 +16,5 @@ public class offer_41 {
 
 
 class test_41{
-    
+
 }
