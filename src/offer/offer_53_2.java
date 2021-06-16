@@ -1,36 +1,16 @@
 package offer;
 
-// 使用二分查找的方法,如果 nums[index] > index
+// 解析题目: 数组长度为n,每一个数都在0-n之间,有一个是缺少的,其余递增
+// 这道题重要的是理解题目的意思:
+// 如果从0开始 i != i位置上的数, 返回i
+// 如果 i 超过了 数组最后一个数的索引,说明缺少的是 nums.length这个数,直接返回数组长度这个数值
 public class offer_53_2 {
     public int missingNumber(int[] nums) {
-
-        int res = indexarr(nums, 0, nums.length-1);
-        return res;
-    }
-    public int indexarr(int[] nums, int start, int end){
-        int res;
-        if(start > end) return -1;
-        else if(start == end){
-            // .....
-        }else{
-
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            if(i != nums[i]) return i;
         }
-
-
-
-        if(nums[start] == start && nums[end] == end) return -1;
-        if(nums[start] > start) return start-1;
-
-        int mid = (start + end)/ 2;
-
-        if(nums[mid] > mid){  // 在左边继续二分
-            int r = indexarr(nums, start, mid -1);
-            if(r == -1) res = mid;
-            else res = r;
-        }else{ //  nums[mid] = mid在右边继续二分
-            res = indexarr(nums, mid + 1, end);
-        }
-        return res;
+        return n;
     }
 }
 class offer_53_2_test{
