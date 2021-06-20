@@ -1,5 +1,7 @@
 package offer;
 
+import java.util.HashMap;
+
 public class offer_58_1 {
     public String reverseWords(String s) {
         String[] strarr = s.split(" ");
