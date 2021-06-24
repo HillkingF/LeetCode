@@ -10,19 +10,14 @@ public class offer_65 {
         int moa = 0;
         int mob = 0;
         int sumi = 0;
-        System.out.println(Integer.toBinaryString(a));
-        System.out.println(Integer.toBinaryString(b));
-        System.out.println();
+
         while(count < 32){
             // 获得a和b最低位的数：01
             moa = Math.abs(a % 2);
             a = a >>> 1;
             mob = Math.abs(b % 2);
             b = b >>> 1;
-            System.out.println(moa);
-            System.out.println(mob);
-            System.out.println(a);
-            System.out.println(b);
+
 
 
             // 将两个最低位和上一个进位进行 +，获得新的进位和本位和
@@ -35,19 +30,13 @@ public class offer_65 {
             }else{
                 c = 0;
             }
-            System.out.println(c);
 
 
             // 将本位的和：先左移，然后加到结果中
             sumi = sumi << count;
-            System.out.println(sumi);
             res = res | sumi;
             count ++;  // 1
-            System.out.println(res);
-            System.out.println();
-            //if(a == 0 && b == 0)break;
         }
-        //res = res | (c << (count));
         return res;
     }
 }
