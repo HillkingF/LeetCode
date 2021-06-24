@@ -1,5 +1,8 @@
 package offer;
 
+
+
+// 分治的思想：与对角线的元素比较，然后分成上下左右四个块分治比较
 public class offer_04 {
     /*任意一个子长方型,
     左上角的元素一定是最小的,
@@ -14,48 +17,50 @@ public class offer_04 {
     *
     * */
     public boolean findNumberIn2DArray(int[][] matrix, int target) {
-        int rows = matrix.length;
-        int cols = matrix[0].length;
-        if(target < matrix[0][0] || target > matrix[rows-1][cols-1]) return false;
-        for (int i = 0; i < rows; i++) {  // 比较表格的最后一列: 列不变,行改变
-            if(matrix[i][cols-1] < target){
+        if(matrix.length == 0 || matrix == null) return false;
+        return f(matrix, target, 0,0, matrix.length-1, matrix[0].length-1);
 
-            }else if(matrix[i][cols] == target ){
-                return true;
-            }else{ // 说明target一定不在这一行之前
-
-
-            }
-
-
-        }
-
-
-
-        if(rows < cols){
-            for (int i = rows - 1; i >= 0; i--) { // 行数大于列数,从整图右下角的位置开始向内比较
-
-
-            }
-        }else if(rows > cols){
-            for (int i = cols - 1; i >= 0; i--) {
-
-            }
-        }else{
-            for (int i = 0; i < rows; i++) { // 行数和列数下相等,因此从左上角的第一个点开始,向右下角方向比较
-                if(matrix[i][i] < target){ // 继续向右下角的方向比较
-                }else if(matrix[i][i] > target){ // 说明已经有上限了
-                    for (int j = 0; j < i; j++) {
-                        if(matrix[i][j] == target) return true;
-                        if(matrix[j][i] == target) return true;
-                    }
-                }else{  // 说明角角上的这个值就是目标值,直接返回找到了
-                    return true;
-                }
-            }
-            return false;
-        }
-        return false;
     }
 
+    // 将整个数组分成四块分治判断：以对角线上的元素与target比较大小进行分治判断
+    public boolean f(int[][] m, int t, int is, int js, int ix, int jx){
+        if(is > ix || js > jx) return false;
+        // 说明这个整块的数全都小于或者大于t
+        if(m[is][js] > t || m[ix][jx] < t) return false;
+
+        // 比较此块中的对角线大小
+        int i = is;
+        int j = js;
+        while(i <= ix && j <= jx){
+            if(m[i][j] == t)return true;
+            else if(m[i][j] < t){
+                i ++;
+                j ++;
+            }else{
+                break;
+            }
+        }
+
+        boolean zuos = false;
+        boolean yous = false;
+        boolean zuox = false;
+        boolean youx = false;
+
+        yous = f(m,t,is,j,i-1,jx);
+        zuox = f(m,t,i,js,ix,j-1);
+        youx = f(m,t,i,j,ix,jx);
+        return zuos || yous || zuox || youx;
+    }
+
+
+}
+
+
+class test_offer_04{
+    public static void main(String[] args) {
+        offer_04 test = new offer_04();
+        int[][] m = {{-1,3}};
+        System.out.println(test.findNumberIn2DArray(m, 3));
+
+    }
 }
