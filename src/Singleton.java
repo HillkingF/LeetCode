@@ -53,7 +53,7 @@ class Threadclass3 implements Callable<String> {
     public String call() throws Exception {
         System.out.println("Callable1");
         return "Callable2";
-        ArrayList
+
     }
 
 }
